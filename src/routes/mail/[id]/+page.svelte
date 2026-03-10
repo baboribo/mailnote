@@ -1,4 +1,6 @@
 <script>
+    // URL에서 "https://"가 빠진 경우 자동으로 추가하는 기능 만들기 - 현재는 href에서 https 붙여서 열도록 일시적으로 다듬었음.
+
     import { page } from "$app/stores";
     import { mailStore } from "$lib/store.js";
     import { derived } from "svelte/store";
@@ -45,7 +47,9 @@
         {#each $mail.services || [] as service}
             <li>
                 {#if service.url}
-                    <a href={service.url} target="_blank">{service.name}</a>
+                    <a href="https://{service.url}" target="_blank"
+                        >{service.name}</a
+                    >
                 {:else}
                     <span>{service.name}</span>
                 {/if}
