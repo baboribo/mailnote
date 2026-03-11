@@ -1,0 +1,26 @@
+body {
+    padding: 20px;
+}
+
+.mail-list {
+    list-style: none;
+    padding: 0;
+}
+
+.mail-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mail-list li div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mail-list a {
+    text-decoration: none;
+    color: #333;
+}

@@ -50,12 +50,14 @@
         <input bind:value={tag} placeholder="태그" />
         <button on:click={addMail}>추가</button>
     </div>
-    <ul>
+    <ul class="mail-list">
         {#each $mailStore as mail}
             <li>
                 <a href="/mail/{mail.id}">
-                    <strong>{mail.email}</strong>
-                    <span>{mail.tag}</span>
+                    <div>
+                        <strong>{mail.email}</strong>
+                        <span>{mail.tag}</span>
+                    </div>
                     <p>{mail.description}</p>
                 </a>
                 <button
