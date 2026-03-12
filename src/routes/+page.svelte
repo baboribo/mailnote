@@ -1,5 +1,6 @@
 <script>
     import { mailStore } from "$lib/store.js";
+    import { version } from "$app/environment"; // 패키지에서 버전 가져옴
 
     let email = "";
     let description = "";
@@ -71,3 +72,6 @@
         {/each}
     </ul>
 </main>
+<footer>
+    <p>v{version}</p>
+</footer>
