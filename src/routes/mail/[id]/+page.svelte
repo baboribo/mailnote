@@ -81,11 +81,11 @@
 
 {#if $mail}
     <a href="/">목록으로 돌아가기</a>
-    <h1>{$mail.email}</h1>
+    <h1 class="desktop-title-email">{$mail.email}</h1>
     <p>{$mail.description}</p>
     <span>{$mail.tag}</span>
 
-    <h2>서비스 목록</h2>
+    <h2 class="desktop-title">서비스 목록</h2>
     <div>
         <input bind:value={serviceName} placeholder="서비스 이름" />
         <input bind:value={serviceUrl} placeholder="URL (선택)" />

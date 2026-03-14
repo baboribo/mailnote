@@ -7,13 +7,6 @@ textarea {
     resize: vertical;
 }
 
-.main-flex {
-    display: flex;
-    flex-direction: rowa;
-    gap: 20px;
-    align-items: flex-start;
-}
-
 .desktop {
     background-color: #008080;
     /* 윈도우 98 바탕화면 틸 색상 */
@@ -28,6 +21,13 @@ textarea {
     font-size: 1.1rem;
     margin: 0 0 16px 0;
     text-shadow: 1px 1px #000;
+}
+
+.desktop-title-email {
+    color: white;
+    font-weight: bold;
+    margin: 0 0 16px 0;
+    text-shadow: 5px 5px #000;
 }
 
 .main-flex {
@@ -84,4 +84,14 @@ textarea {
     margin: 2px 0 0 0;
     font-size: 11px;
     color: #555;
+}
+
+@media screen and (max-width: 500px) {
+    .main-flex {
+        flex-direction: column;
+    }
+
+    .window {
+        width: 100% !important;
+    }
 }
