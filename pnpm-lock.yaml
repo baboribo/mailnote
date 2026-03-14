@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      98.css:
+        specifier: ^0.1.21
+        version: 0.1.21
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^7.0.0
@@ -31,6 +35,9 @@ importers:
         version: 7.3.1
 
 packages:
+
+  98.css@0.1.21:
+    resolution: {integrity: sha512-ddk5qtUWyapM0Bzd5jwGExoE5fdSEGrP+F5VbYjyZLf2c9UVmn6w2NPTvCsoD4BWdGsjdLjlkQGhWwWTJcYQJQ==}
 
   '@esbuild/aix-ppc64@0.27.3':
     resolution: {integrity: sha512-9fJMTNFTWZMh5qwrBItuziu834eOCUcEqymSH7pY+zoMVEZg3gcPuBNxH1EvfVYe9h0x/Ptw8KBzv7qxb7l8dg==}
@@ -596,6 +603,8 @@ packages:
     resolution: {integrity: sha512-B58NGBEoc8Y9MWWCQGl/gq9xBCe4IiKM0a2x7GZdQKOW5Exr8S1W24J6OgM1njK8xCRGvAJIL/MxXHf6SkmQKQ==}
 
 snapshots:
+
+  98.css@0.1.21: {}
 
   '@esbuild/aix-ppc64@0.27.3':
     optional: true

@@ -5,6 +5,14 @@
     import { mailStore } from "$lib/store.js";
     import { derived } from "svelte/store";
 
+    let serviceName = "";
+    let serviceUrl = "";
+
+    let showDialog = false; // 데이터 제거 다이얼로그
+
+    // @ts-expect-error
+    let targetId = null; // 데이터 제거 시 사용되는 타겟 ID
+
     const id = /** @type {string} */ ($page.params.id);
 
     const mail = derived(mailStore, ($mailStore) =>
@@ -12,9 +20,6 @@
             /** @type {function(any): boolean} */ (m) => m.id === id,
         ),
     );
-
-    let serviceName = "";
-    let serviceUrl = "";
 
     function addService() {
         if (!serviceName) return;
@@ -29,6 +34,50 @@
         serviceUrl = "";
     }
 </script>
+
+<!-- 이메일 용도 삭제 다이얼로그 -->
+{#if showDialog}
+    <div
+        class="window"
+        style="width: 200px; position: fixed; top: 42%; left: 45%;"
+    >
+        <div class="title-bar">
+            <div class="title-bar-text">용도 주소 삭제</div>
+            <div class="title-bar-controls">
+                <button
+                    aria-label="Close"
+                    on:click={() => {
+                        targetId = null;
+                        showDialog = false;
+                    }}
+                ></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <p>
+                정말로 삭제하시겠습니까? <br />
+                <span style="color: red;"
+                    >삭제할 경우 다시 복원할 수 없게됩니다.</span
+                >
+            </p>
+            <div class="field-row" style="justify-content: flex-end;">
+                <button
+                    on:click={() => {
+                        // @ts-ignore
+                        mailStore.removeService(id, targetId);
+                        showDialog = false;
+                    }}>예</button
+                >
+                <button
+                    on:click={() => {
+                        targetId = null;
+                        showDialog = false;
+                    }}>아니오</button
+                >
+            </div>
+        </div>
+    </div>
+{/if}
 
 {#if $mail}
     <a href="/">목록으로 돌아가기</a>
@@ -55,7 +104,8 @@
                 {/if}
                 <button
                     on:click={() => {
-                        mailStore.removeService(id, service.id);
+                        targetId = service.id;
+                        showDialog = true;
                     }}>삭제</button
                 >
             </li>
